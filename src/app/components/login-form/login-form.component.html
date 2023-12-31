@@ -1,0 +1,10 @@
+<div>
+  <mat-tab-group>
+    <mat-tab label="Zaloguj">
+      <app-login (onSubmitLoginEvent)="onLogin($event)"/>
+    </mat-tab>
+    <mat-tab label="Rejestracja">
+      <app-register (onSubmitRegisterEvent)="onRegister($event)"/>
+    </mat-tab>
+  </mat-tab-group>
+</div>

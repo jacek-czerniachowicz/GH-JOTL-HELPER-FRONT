@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {StateManagerService} from "./services/state-manager.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'GH-JOTL-HELPER-FRONT';
+
+  protected readonly StateManagerService = StateManagerService;
 }

@@ -1,0 +1,3 @@
+<app-welcome-content *ngIf="StateManagerService.componentToShow == 'welcome'"/>
+<app-login-form *ngIf="StateManagerService.componentToShow == 'login' && !StateManagerService.isAuthorized"/>
+<app-management *ngIf="StateManagerService.isAuthorized"/>

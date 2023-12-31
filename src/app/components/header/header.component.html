@@ -1,0 +1,10 @@
+<div class="header-label">
+  <div *ngIf="StateManagerService.componentToShow == 'welcome'">
+    <button mat-raised-button color="primary" style="margin: 10px"
+            (click)="loginEvent.emit()">Zaloguj się</button>
+  </div>
+  <div *ngIf="StateManagerService.isAuthorized">
+    <button mat-raised-button style="margin: 10px"
+            (click)="logoutEvent.emit()">Wyloguj</button>
+  </div>
+</div>

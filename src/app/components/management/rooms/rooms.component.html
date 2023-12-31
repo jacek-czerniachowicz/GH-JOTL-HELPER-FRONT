@@ -1,0 +1,18 @@
+<button mat-raised-button color="accent" (click)="showCreateForm = true">Stwórz nowy pokój</button>
+<button mat-raised-button color="accent" (click)="showJoinForm = true">Dołącz do pokoju</button>
+
+<div *ngIf="showCreateForm">
+  <form (ngSubmit)="createRoom()">
+    <mat-form-field>
+      <mat-label>Nazwa pokoju</mat-label>
+      <input type="text" name="roomName" required="true" [(ngModel)]="newRoomName" matInput>
+    </mat-form-field>
+    <button type="submit" mat-stroked-button>Utwórz</button>
+  </form>
+</div>
+
+<app-room-detail
+  *ngFor="let room of rooms" [room]="room"
+  (removeItemEvent)="deleteRoom($event)"
+/>
+
