@@ -1,3 +1,6 @@
 <div>
-  <app-rooms/>
+  <app-rooms *ngIf="StateManagerService.componentToShow == 'rooms'"
+  (roomEvent)="setRoom($event)"/>
+  <app-room *ngIf="StateManagerService.componentToShow == 'room'"
+  [room]="room"/>
 </div>

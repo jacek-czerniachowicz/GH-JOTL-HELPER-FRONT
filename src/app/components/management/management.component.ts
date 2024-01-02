@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, Input, Output} from '@angular/core';
 import {StateManagerService} from "../../services/state-manager.service";
+import {RoomRepresentation} from "../../services/api/models/RoomRepresentation";
 
 @Component({
   selector: 'app-management',
@@ -9,4 +10,12 @@ import {StateManagerService} from "../../services/state-manager.service";
 export class ManagementComponent {
   protected readonly StateManagerService = StateManagerService;
 
+  room: RoomRepresentation = {}
+
+  setRoom(room: RoomRepresentation) {
+    this.room = room;
+  }
+  getRoom(){
+    return this.room;
+  }
 }

@@ -11,8 +11,19 @@
   </form>
 </div>
 
+<div *ngIf="showJoinForm">
+  <form (ngSubmit)="joinRoom()">
+    <mat-form-field>
+      <mat-label>Kod zaproszenia</mat-label>
+      <input type="text" name="inviteCode" required="true" [(ngModel)]="inviteCode" matInput>
+    </mat-form-field>
+    <button type="submit" mat-stroked-button>Dołącz</button>
+  </form>
+</div>
+
 <app-room-detail
   *ngFor="let room of rooms" [room]="room"
   (removeItemEvent)="deleteRoom($event)"
+  (chooseItemEvent)="openRoom($event)"
 />
 

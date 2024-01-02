@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AxiosService} from "../../../services/axios.service";
 import {RoomRepresentation} from "../../../services/api/models/RoomRepresentation";
+import {StateManagerService} from "../../../services/state-manager.service";
+import {InviteCodeService} from "../../../services/invite-code.service";
 
 
 @Component({
@@ -13,9 +15,13 @@ export class RoomsComponent implements OnInit{
   showJoinForm: boolean = false;
 
   rooms: RoomRepresentation[] = [];
+  @Output() room: RoomRepresentation = {};
+  @Output() roomEvent = new EventEmitter<RoomRepresentation>()
   newRoomName: string = "";
+  inviteCode: string = "";
 
-  constructor(private http: AxiosService){
+  constructor(
+    private http: AxiosService, private invService: InviteCodeService){
   }
 
   ngOnInit(): void {
@@ -52,6 +58,34 @@ export class RoomsComponent implements OnInit{
     ).then( response => {
       this.rooms = this.rooms
         .filter((room: RoomRepresentation) => room.id != id)
+    })
+  }
+
+  openRoom(id: number) {
+    this.http.request(
+      "GET",
+      `/api/v1/rooms/${id}`,
+      null
+    ).then(response => {
+      StateManagerService.showComponent("room")
+      this.room = response.data
+      this.roomEvent.emit(response.data)
+    })
+  }
+
+  joinRoom() {
+    let id = this.invService.getIdByCode(this.inviteCode);
+    if (id == -1){
+      return;
+    }
+    this.http.request(
+      "PUT",
+      `/api/v1/rooms/join/${id}`,
+      null
+    ).then(response => {
+      StateManagerService.showComponent("room")
+      this.room = response.data
+      this.roomEvent.emit(response.data)
     })
   }
 }

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { HttpService } from './http.service';
+import { InviteCodeService } from './invite-code.service';
 
-describe('HttpService', () => {
-  let service: HttpService;
+describe('InviteCodeService', () => {
+  let service: InviteCodeService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(HttpService);
+    service = TestBed.inject(InviteCodeService);
   });
 
   it('should be created', () => {

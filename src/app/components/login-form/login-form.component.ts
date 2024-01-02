@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {HttpService} from "../../services/http.service";
 import {AxiosService} from "../../services/axios.service";
 import {StateManagerService} from "../../services/state-manager.service";
+
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -22,6 +22,7 @@ export class LoginFormComponent {
     ).then(response => {
       this.http.setAuthToken(response.data.access_token)
       StateManagerService.setIsAuthorized(true);
+      StateManagerService.showComponent("rooms")
     })
       .catch(err => console.log(err))
   }
@@ -39,6 +40,7 @@ export class LoginFormComponent {
     ).then(response => {
       this.http.setAuthToken(response.data.access_token)
       StateManagerService.setIsAuthorized(true);
+      StateManagerService.showComponent("rooms")
     })
       .catch(err => console.log(err))
   }
