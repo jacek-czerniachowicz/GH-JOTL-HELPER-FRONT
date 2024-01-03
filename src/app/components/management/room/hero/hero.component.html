@@ -1,0 +1,32 @@
+<div *ngIf="isUserHaveHero">
+  <h4>{{hero.name}}</h4>
+  <h4>Klasa: {{raceExport(hero.race)}}</h4>
+  <p>Poziom: {{hero.level}}</p>
+  <p>Dostępne punkty atutu: {{calculatePerkPoints(hero.progressPoints)}}</p>
+
+  <h4>*Zarządzanie kartami*</h4>
+  <button mat-stroked-button (click)="cardsManagement()"></button>
+  <h4>*Zarządzanie przedmiotami*</h4>
+  <button mat-stroked-button (click)="itemsManagement()"></button>
+  <h4>*Zarządzanie atuatami*</h4>
+  <button mat-stroked-button (click)="perksManagement()"></button>
+</div>
+
+<div *ngIf="!isUserHaveHero">
+  <form class="form" (ngSubmit)="onSubmitForm()">
+    <p>Nie wybrałes jeszcze bohatra. W tym miejscu możesz go storzyć.</p>
+    <mat-form-field>
+      <mat-label>Imię bohatera</mat-label>
+      <input matInput placeholder="Placeholder" name="heroName" required="true" [(ngModel)]="heroName">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Klasa postaci</mat-label>
+      <mat-select name="heroRace" required [(ngModel)]="heroRace">
+          <mat-option *ngFor="let race of availableRaces" [value]="race">
+            {{raceExport(race)}}
+          </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="primary">Ok</button>
+  </form>
+</div>

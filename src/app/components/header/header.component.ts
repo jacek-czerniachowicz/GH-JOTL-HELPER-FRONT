@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {MatButtonModule} from '@angular/material/button';
 import {StateManagerService} from "../../services/state-manager.service";
 
 @Component({

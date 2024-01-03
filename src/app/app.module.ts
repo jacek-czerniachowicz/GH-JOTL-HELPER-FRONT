@@ -20,6 +20,12 @@ import {RoomsComponent} from './components/management/rooms/rooms.component';
 import {RoomDetailComponent} from './components/management/rooms/room-detail/room-detail.component';
 import {MatCardModule} from "@angular/material/card";
 import {RoomComponent} from './components/management/room/room.component';
+import { InfoComponent } from './components/management/room/info/info.component';
+import { HeroComponent } from './components/management/room/hero/hero.component';
+import { MerchantComponent } from './components/management/room/merchant/merchant.component';
+import { ItemDetailsComponent } from './components/management/room/merchant/item-details/item-details.component';
+import {MatSelectModule} from "@angular/material/select";
+import { HeroInfoDetailsComponent } from './components/management/room/info/hero-info-details/hero-info-details.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +39,12 @@ import {RoomComponent} from './components/management/room/room.component';
     ManagementComponent,
     RoomsComponent,
     RoomDetailComponent,
-    RoomComponent
+    RoomComponent,
+    InfoComponent,
+    HeroComponent,
+    MerchantComponent,
+    ItemDetailsComponent,
+    HeroInfoDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +56,7 @@ import {RoomComponent} from './components/management/room/room.component';
     MatTabsModule,
     HttpClientModule,
     MatCardModule,
+    MatSelectModule,
   ],
   providers: [
     HttpClient

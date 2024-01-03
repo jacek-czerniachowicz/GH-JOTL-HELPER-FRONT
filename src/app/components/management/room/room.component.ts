@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {RoomRepresentation} from "../../../services/api/models/RoomRepresentation";
 import {InviteCodeService} from "../../../services/invite-code.service";
+import {StateManagerService} from "../../../services/state-manager.service";
 
 @Component({
   selector: 'app-room',
@@ -10,7 +11,6 @@ import {InviteCodeService} from "../../../services/invite-code.service";
 export class RoomComponent {
   constructor(private invService: InviteCodeService) {
   }
-
 
   @Input() room: RoomRepresentation = {};
 
@@ -22,5 +22,9 @@ export class RoomComponent {
       this.inviteCode = this.invService.generateUniqueString(this.room.id)
     }
     console.log("TEST: " + this.invService.getIdByCode(this.inviteCode))
+  }
+
+  returnToRooms() {
+    StateManagerService.showComponent("rooms")
   }
 }

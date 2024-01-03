@@ -1,0 +1,20 @@
+<div>
+  <h4>Pokój: {{room.roomName}}</h4>
+  <h4>Aktualny scenariusz: {{room.level}} to implemented</h4>
+
+  <h4>Bohaterowie:</h4>
+  <li *ngFor="let hero of room.heroes">
+    {{hero.name}} {{hero.race}} {{hero.level}}
+    <mat-card>
+      <mat-card-title>
+        {{hero.race}}
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{hero.name}} lvl:{{hero.level}}
+      </mat-card-subtitle>
+      <mat-card-actions>
+        <button mat-raised-button (click)="showHeroDetails(hero.id)">Wyświetl szczegóły</button>
+      </mat-card-actions>
+    </mat-card>
+  </li>
+</div>

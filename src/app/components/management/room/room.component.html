@@ -1,7 +1,18 @@
-<p>room works!</p>
+<mat-tab-group>
+  <mat-tab label="Informacje">
+    <button mat-raised-button (click)="showInviteCode()">Pokaż kod zaproszenia</button>
+    <mat-label>{{inviteCode}}</mat-label>
+    <app-info [room]="room"/>
+    <button mat-raised-button (click)="returnToRooms()">Powrót</button>
+  </mat-tab>
+  <mat-tab label="Bohater">
+    <app-hero [room]="room"/>
+  </mat-tab>
+  <mat-tab label="Kupiec">
+    <app-merchant [room]="room"/>
+  </mat-tab>
+</mat-tab-group>
 
-{{room.id}} {{room.roomName}}
 
 
-<button (click)="showInviteCode()" mat-raised-button>Pokaż kod zaproszenia</button>
-<label>{{inviteCode}}</label>
+

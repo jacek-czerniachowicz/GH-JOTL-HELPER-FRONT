@@ -61,7 +61,7 @@ export class RoomsComponent implements OnInit{
     })
   }
 
-  openRoom(id: number) {
+  openRoom(id:number) {
     this.http.request(
       "GET",
       `/api/v1/rooms/${id}`,
@@ -83,9 +83,8 @@ export class RoomsComponent implements OnInit{
       `/api/v1/rooms/join/${id}`,
       null
     ).then(response => {
-      StateManagerService.showComponent("room")
-      this.room = response.data
-      this.roomEvent.emit(response.data)
+      this.openRoom(id);
     })
+
   }
 }
