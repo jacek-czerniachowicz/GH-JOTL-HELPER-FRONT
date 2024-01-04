@@ -25,7 +25,12 @@ import { HeroComponent } from './components/management/room/hero/hero.component'
 import { MerchantComponent } from './components/management/room/merchant/merchant.component';
 import { ItemDetailsComponent } from './components/management/room/merchant/item-details/item-details.component';
 import {MatSelectModule} from "@angular/material/select";
-import { HeroInfoDetailsComponent } from './components/management/room/info/hero-info-details/hero-info-details.component';
+import { HeroInfoDialogComponent } from './components/management/room/info/hero-info-dialog/hero-info-dialog.component';
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
+import { AbilityCardsComponent } from './components/management/room/hero/ability-cards/ability-cards.component';
+import { ItemsManagementComponent } from './components/management/room/hero/items-management/items-management.component';
+import { PerksManagementComponent } from './components/management/room/hero/perks-management/perks-management.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +49,10 @@ import { HeroInfoDetailsComponent } from './components/management/room/info/hero
     HeroComponent,
     MerchantComponent,
     ItemDetailsComponent,
-    HeroInfoDetailsComponent
+    HeroInfoDialogComponent,
+    AbilityCardsComponent,
+    ItemsManagementComponent,
+    PerksManagementComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +65,11 @@ import { HeroInfoDetailsComponent } from './components/management/room/info/hero
     HttpClientModule,
     MatCardModule,
     MatSelectModule,
+    MatGridListModule,
+    MatDialogTitle,
+    MatDialogContent,
+    MatDialogActions,
+    MatDialogClose,
   ],
   providers: [
     HttpClient

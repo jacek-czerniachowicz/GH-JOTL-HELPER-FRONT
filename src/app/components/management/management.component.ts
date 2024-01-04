@@ -10,7 +10,7 @@ import {RoomRepresentation} from "../../services/api/models/RoomRepresentation";
 export class ManagementComponent {
   protected readonly StateManagerService = StateManagerService;
 
-  room: RoomRepresentation = {}
+  room: RoomRepresentation = <RoomRepresentation>{}
 
   setRoom(room: RoomRepresentation) {
     this.room = room;

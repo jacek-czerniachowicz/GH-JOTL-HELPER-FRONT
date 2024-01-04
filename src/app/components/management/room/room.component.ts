@@ -12,7 +12,7 @@ export class RoomComponent {
   constructor(private invService: InviteCodeService) {
   }
 
-  @Input() room: RoomRepresentation = {};
+  @Input() room: RoomRepresentation = <RoomRepresentation>{};
 
   inviteCode: string = "";
 

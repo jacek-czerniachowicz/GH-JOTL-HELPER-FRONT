@@ -1,0 +1,25 @@
+<div class="flex-container">
+    <mat-card *ngFor="let card of selectedCards" class="equipped">
+      <mat-card-title>
+        <mat-label>Wyposażona</mat-label>
+      </mat-card-title>
+      <mat-card-content>
+        {{card.name}} lvl:{{card.required_level}}
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-stroked-button color="warn" (click)="unselectCard(card.id)">Usuń</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card *ngFor="let card of availableCards" class="unequipped">
+      <mat-card-title>
+        <mat-label>Dostępna</mat-label>
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{card.name}} lvl:{{card.required_level}}
+      </mat-card-subtitle>
+      <mat-card-actions>
+        <button mat-stroked-button color="primary" (click)="selectCard(card.id)">Wybierz</button>
+      </mat-card-actions>
+    </mat-card>
+</div>

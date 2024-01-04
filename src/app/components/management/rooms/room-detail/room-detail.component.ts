@@ -9,7 +9,7 @@ import {RoomRepresentation} from "../../../../services/api/models/RoomRepresenta
 export class RoomDetailComponent {
   user: string = ""
   @Input()
-  room: RoomRepresentation = {};
+  room: RoomRepresentation = <RoomRepresentation>{};
   @Output()
   removeItemEvent = new EventEmitter();
   @Output()

@@ -9,7 +9,7 @@ import {RoomRepresentation} from "../../../../services/api/models/RoomRepresenta
   styleUrl: './merchant.component.css'
 })
 export class MerchantComponent implements OnInit{
-  @Input() room: RoomRepresentation = {}
+  @Input() room: RoomRepresentation = <RoomRepresentation>{}
   items: ItemRepresentation[] = []
 
   constructor(private http: AxiosService) {

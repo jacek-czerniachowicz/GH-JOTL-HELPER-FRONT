@@ -1,15 +1,31 @@
 <div *ngIf="isUserHaveHero">
-  <h4>{{hero.name}}</h4>
-  <h4>Klasa: {{raceExport(hero.race)}}</h4>
-  <p>Poziom: {{hero.level}}</p>
-  <p>Dostępne punkty atutu: {{calculatePerkPoints(hero.progressPoints)}}</p>
-
-  <h4>*Zarządzanie kartami*</h4>
-  <button mat-stroked-button (click)="cardsManagement()"></button>
-  <h4>*Zarządzanie przedmiotami*</h4>
-  <button mat-stroked-button (click)="itemsManagement()"></button>
-  <h4>*Zarządzanie atuatami*</h4>
-  <button mat-stroked-button (click)="perksManagement()"></button>
+  <mat-grid-list cols="3" rowHeight="100px">
+    <mat-grid-tile colspan="3">
+      <h4>{{hero.heroName}}</h4>
+      <h4>Klasa: {{raceExport(hero.race)}}</h4>
+      <p>Poziom: {{hero.level}}</p>
+      <p>Dostępne punkty atutu: {{calculatePerkPoints(hero.progress)}}</p>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <h4>*Zarządzanie kartami*</h4>
+      <button mat-stroked-button (click)="cardsManagement()">Karty</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <h4>*Zarządzanie przedmiotami*</h4>
+      <button mat-stroked-button (click)="itemsManagement()">Ekwipunek</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <h4>*Zarządzanie atuatami*</h4>
+      <button mat-stroked-button (click)="perksManagement()">Atuty</button>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="3" rowspan="3">
+      <div class="test">
+        <app-ability-cards *ngIf="componentToShow == 'cards'" [hero]="hero" [room]="room"/>
+        <app-items-management *ngIf="componentToShow == 'items'"/>
+        <app-perks-management *ngIf="componentToShow == 'perks'"/>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>
 
 <div *ngIf="!isUserHaveHero">
@@ -22,9 +38,9 @@
     <mat-form-field>
       <mat-label>Klasa postaci</mat-label>
       <mat-select name="heroRace" required [(ngModel)]="heroRace">
-          <mat-option *ngFor="let race of availableRaces" [value]="race">
-            {{raceExport(race)}}
-          </mat-option>
+        <mat-option *ngFor="let race of availableRaces" [value]="race">
+          {{raceExport(race)}}
+        </mat-option>
       </mat-select>
     </mat-form-field>
     <button type="submit" mat-raised-button color="primary">Ok</button>

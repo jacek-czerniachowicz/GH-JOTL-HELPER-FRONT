@@ -1,10 +1,11 @@
 export interface HeroRepresentation {
   id: number,
-  name: string,
+  heroName: string,
   race: string,
   xp: number,
-  progressPoints: number,
+  progress: number,
   level: number,
   gold: number
-  deckSize: number
+  owner: string,
+  deck_size: number
 }

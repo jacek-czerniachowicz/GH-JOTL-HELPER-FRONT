@@ -10,15 +10,17 @@ import {RoomRepresentation} from "../../../../services/api/models/RoomRepresenta
 })
 export class HeroComponent implements OnInit{
 
-  @Input() room: RoomRepresentation = {};
+  @Input() room: RoomRepresentation = <RoomRepresentation>{};
 
   hero: HeroRepresentation = <HeroRepresentation>{};
   isUserHaveHero: boolean = false;
-  availableRaces: string[] = ["VOIDWARDEN", "REDGURAD", "HATCHET", "DEMOLITIONIST"];
+  availableRaces: string[] = ["VOIDWARDEN", "REDGUARD", "HATCHET", "DEMOLITIONIST"];
   raceToNameMap = new Map<string, string>;
   nameToRaceMap = new Map<string, string>;
   heroName: string = "";
   heroRace: string = "";
+
+  componentToShow: string = ""
 
   constructor(private http: AxiosService){
     this.setMap();
@@ -29,6 +31,8 @@ export class HeroComponent implements OnInit{
 
   ngOnInit(): void {
     this.loadUserHero();
+    console.log(this.hero)
+    console.log(this.room)
   }
 
   loadUserHero(){
@@ -49,12 +53,12 @@ export class HeroComponent implements OnInit{
 
   setMap(){
     this.raceToNameMap.set("VOIDWARDEN", "Pustowicielka")
-    this.raceToNameMap.set("REDGURAD", "Czerwony strażnik")
+    this.raceToNameMap.set("REDGUARD", "Czerwony strażnik")
     this.raceToNameMap.set("HATCHET", "Topór")
     this.raceToNameMap.set("DEMOLITIONIST", "Wyburzyciel")
 
     this.nameToRaceMap.set("Pustowicielka", "VOIDWARDEN")
-    this.nameToRaceMap.set("Czerwony strażnik", "REDGURAD")
+    this.nameToRaceMap.set("Czerwony strażnik", "REDGUARD")
     this.nameToRaceMap.set("Topór", "HATCHET")
     this.nameToRaceMap.set("Wyburzyciel", "DEMOLITIONIST")
   }
@@ -84,15 +88,15 @@ export class HeroComponent implements OnInit{
   }
 
   cardsManagement() {
-
+    this.componentToShow = "cards"
   }
 
   itemsManagement() {
-
+    this.componentToShow = "items"
   }
 
   perksManagement() {
-
+    this.componentToShow = "perks"
   }
 
   onSubmitForm() {

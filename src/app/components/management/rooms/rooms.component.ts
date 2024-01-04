@@ -15,7 +15,7 @@ export class RoomsComponent implements OnInit{
   showJoinForm: boolean = false;
 
   rooms: RoomRepresentation[] = [];
-  @Output() room: RoomRepresentation = {};
+  @Output() room: RoomRepresentation = <RoomRepresentation>{};
   @Output() roomEvent = new EventEmitter<RoomRepresentation>()
   newRoomName: string = "";
   inviteCode: string = "";
