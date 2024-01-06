@@ -16,7 +16,7 @@ export class MerchantComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.loadItems();
+    this.refresh();
   }
 
   loadItems(){
@@ -29,5 +29,18 @@ export class MerchantComponent implements OnInit{
     })
   }
 
+  buyItem(id: number){
+    this.http.request(
+      "POST",
+      `/api/v1/rooms/${this.room.id}/items/${id}`,
+      null
+    ).then(response => {
+      this.refresh();
+    })
+  }
+
+  refresh(){
+    this.loadItems();
+  }
 
 }

@@ -1,1 +1,16 @@
-<p>perks-management works!</p>
+<div class="flex-container">
+  <mat-card *ngFor="let perk of selectedPerks" class="equipped">
+    <mat-card-content>
+      {{perk.description}}
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card *ngFor="let perk of perks" class="unequipped">
+    <mat-card-content>
+      {{perk.description}}
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-stroked-button (click)="selectPerk(perk.id)">Wybierz</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

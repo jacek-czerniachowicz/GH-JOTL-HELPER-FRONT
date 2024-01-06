@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {ItemRepresentation} from "../../../../../services/api/models/ItemRepresentation";
 
 @Component({
@@ -9,4 +9,9 @@ import {ItemRepresentation} from "../../../../../services/api/models/ItemReprese
 export class ItemDetailsComponent {
 
   @Input() item: ItemRepresentation = <ItemRepresentation>{}
+  @Output() buyItemEvent = new EventEmitter();
+
+  buyItem(id: number) {
+    this.buyItemEvent.emit(id);
+  }
 }

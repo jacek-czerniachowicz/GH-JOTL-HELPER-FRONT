@@ -1,1 +1,11 @@
-<p>items-management works!</p>
+<mat-card *ngFor="let item of heroItems">
+  <mat-card-title>
+    {{item.name}} {{item.price}}
+  </mat-card-title>
+  <mat-card-subtitle>
+    {{item.description}}
+  </mat-card-subtitle>
+  <mat-card-actions>
+    <button mat-stroked-button (click)="selectItem(item.id)">Wyposaż</button>
+  </mat-card-actions>
+</mat-card>

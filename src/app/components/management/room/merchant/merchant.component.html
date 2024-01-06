@@ -1,1 +1,1 @@
-<app-item-details *ngFor="let item of items" [item]="item"/>
+<app-item-details *ngFor="let item of items" [item]="item" (buyItemEvent)="buyItem($event)"/>

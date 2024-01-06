@@ -1,31 +1,28 @@
 <div *ngIf="isUserHaveHero">
   <mat-grid-list cols="3" rowHeight="100px">
-    <mat-grid-tile colspan="3">
-      <h4>{{hero.heroName}}</h4>
-      <h4>Klasa: {{raceExport(hero.race)}}</h4>
-      <p>Poziom: {{hero.level}}</p>
-      <p>Dostępne punkty atutu: {{calculatePerkPoints(hero.progress)}}</p>
+    <mat-grid-tile colspan="3" rowspan="2">
+      <div>
+        <h4>{{hero.heroName}}</h4>
+        <h4>Klasa: {{raceExport(hero.race)}}</h4>
+        <p>Poziom: {{hero.level}}</p>
+        <p>Dostępne punkty atutu: {{calculatePerkPoints(hero.progress)}}</p>
+      </div>
     </mat-grid-tile>
     <mat-grid-tile>
-      <h4>*Zarządzanie kartami*</h4>
       <button mat-stroked-button (click)="cardsManagement()">Karty</button>
     </mat-grid-tile>
     <mat-grid-tile>
-      <h4>*Zarządzanie przedmiotami*</h4>
       <button mat-stroked-button (click)="itemsManagement()">Ekwipunek</button>
     </mat-grid-tile>
     <mat-grid-tile>
-      <h4>*Zarządzanie atuatami*</h4>
       <button mat-stroked-button (click)="perksManagement()">Atuty</button>
     </mat-grid-tile>
-    <mat-grid-tile colspan="3" rowspan="3">
-      <div class="test">
-        <app-ability-cards *ngIf="componentToShow == 'cards'" [hero]="hero" [room]="room"/>
-        <app-items-management *ngIf="componentToShow == 'items'"/>
-        <app-perks-management *ngIf="componentToShow == 'perks'"/>
-      </div>
-    </mat-grid-tile>
   </mat-grid-list>
+  <div class="test">
+    <app-ability-cards *ngIf="componentToShow == 'cards'" [hero]="hero" [room]="room"/>
+    <app-items-management *ngIf="componentToShow == 'items'" [room]="room"/>
+    <app-perks-management *ngIf="componentToShow == 'perks'" [hero]="hero" [room]="room"/>
+  </div>
 </div>
 
 <div *ngIf="!isUserHaveHero">
